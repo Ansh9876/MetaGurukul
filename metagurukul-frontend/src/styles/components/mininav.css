@@ -1,0 +1,13 @@
+.mini-nav {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    z-index: 10;
+    
+}
+
+.mini-logo {
+    width: 175px;
+    margin-left: 40px;
+    background: #cd9b3f
+}

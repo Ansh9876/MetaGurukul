@@ -1,0 +1,72 @@
+.login-page {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.login-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url( ./login-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px) brightness(0.6); /* blur + dim */
+  z-index: -1;
+}
+
+
+.login-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  text-align: center;
+  z-index: 0;
+}
+
+.login-box input,
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.sign-in-btn {
+  background-color: #cd9b3f;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.signin-code-btn {
+  background-color: #cead60;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.or {
+  margin: 10px 0;
+}
+
+.forgot,
+.signup-text span {
+  color: #cead60;
+  text-decoration: underline;
+  cursor: pointer;
+}

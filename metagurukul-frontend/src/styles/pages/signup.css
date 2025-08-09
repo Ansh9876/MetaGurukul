@@ -1,0 +1,64 @@
+.signup-page {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.signup-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url(./login-bg.jpg); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(4px) brightness(0.6);
+  z-index: -1;
+}
+
+.signup-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  text-align: center;
+  z-index: 1;
+}
+
+.signup-box input,
+.signup-box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.signup-btn {
+  background-color: #cd9b3f;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.login-text span {
+  color: #cead60;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.captcha-note {
+  font-size: 0.75rem;
+  margin-top: 10px;
+  color: #ccc;
+}
