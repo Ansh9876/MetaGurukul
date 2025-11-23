@@ -1,0 +1,129 @@
+.admin-dashboard {
+  padding: 50px;
+  background: linear-gradient(135deg, #fffaf3, #faf6f0);
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+
+.dashboard-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #7d380a;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.dashboard-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #cd9b3f;
+  margin: 12px auto 0;
+  border-radius: 3px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(205,155,63,0.08), transparent 60%);
+  transition: all 0.4s ease;
+}
+
+.card:hover::before {
+  top: -40%;
+  left: -40%;
+}
+
+.card-icon {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #7d380a;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #7d380a;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.card p {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #cd9b3f;
+  margin: 0;
+}
+
+.user-card {
+  border-top: 6px solid #cd9b3f;
+}
+
+.course-card {
+  border-top: 6px solid #855535;
+}
+
+.revenue-card {
+  border-top: 6px solid #cead60;
+}
+
+.analytics-section {
+  margin-top: 60px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.analytics-section h2 {
+  color: #7d380a;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.chart-placeholder {
+  height: 250px;
+  background: linear-gradient(135deg, #fdf4e3, #faf6f0);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cd9b3f;
+  font-size: 1.2rem;
+  font-weight: 500;
+}

@@ -9,12 +9,14 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [email, setEmail] = useState(localStorage.getItem("email"));
+  const [role, setRole] = useState(localStorage.getItem("role"));
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.clear();
     setToken(null);
     setEmail(null);
+    setRole(null);
     navigate("/login");
   };
 
@@ -23,6 +25,7 @@ const Navbar = () => {
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     setEmail(localStorage.getItem("email"));
+    setRole(localStorage.getItem("role"));
 
     const handleClickOutside = (e) => {
       if (!e.target.closest(".profile-wrapper")) {
@@ -35,6 +38,19 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
     <nav className="navbar">
@@ -43,36 +59,48 @@ const Navbar = () => {
       </div>
 
       <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
-        <li><a href="/courses">Courses</a></li>
-        <li><a href="/webinars">Webinars</a></li>
+        <li><a href="/courses">Courses</a></li> 
         <li><a href="/membership">Memberships</a></li>
 
-        {token && (
+        {token && role === "user" && (
           <li><Link to="/user-dashboard">My Dashboard</Link></li>
+        )}
+        {token && role === "admin" && (
+          <li><Link to="/admin-dashboard">A-Dashboard</Link></li>
         )}
       </ul>
 
       <div className="navbar-right">
         {token ? (
-          <div className="profile-wrapper"> 
-           <div className="profile-circle"
+          <div className="profile-wrapper">
+            <div className="profile-circle"
               onClick={(e) => {
-                e.stopPropagation(); 
+                e.stopPropagation();
                 setDropdownOpen(!dropdownOpen);
               }}
-              >{getInitial(email)}  
-              </div>
-              
-            
+            >{getInitial(email)}
+            </div>
+
+
             {dropdownOpen && (
               <div
                 className="custom-dropdown"
                 onClick={(e) => e.stopPropagation()}
               >
-                <Link to="/profile">My Profile</Link>
+                <Link
+                  to={
+                    localStorage.getItem("role") === "admin"
+                      ? "/admin-dashboard/admin-profile"
+                      : "/user-dashboard/user-profile"
+                  }
+                >
+                  My Profile
+                </Link>
+
                 <button onClick={handleLogout}>Logout</button>
               </div>
             )}
+
 
           </div>
         ) : (

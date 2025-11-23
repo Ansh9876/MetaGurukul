@@ -1,66 +1,62 @@
-.courses-page{
-    padding: 3rem;
-    background-color: #fdf7ec;
-    min-height: 80vh;
-    font-family: 'Segoe UI', sans-serif;
+.courses-page {
+  padding: 40px 60px;
+  background-color: #faf6ef;
+  min-height: 100vh;
 }
 
-.courses-pg-heading{
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    font-size: 3rem;
+.courses-pg-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #7d380a;
+  font-weight: bold;
 }
 
-.courses-grid{
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    flex-wrap: wrap;
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
 }
 
-.courses-card{
-    background-color: #fff;
-  border: 1px solid #e6e6e6;
+.course-card {
+  background: #fff;
   border-radius: 12px;
- 
-  width: 250px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
-
-.courses-card:hover {
-  transform: scale(1.03);
-}
-
-.courses-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.courses-card h3 {
-  margin-top: 1rem;
-  color: #855535;
-}
-
-.courses-card p {
-  font-size: 0.95rem;
-  margin: 0.5rem 0 1rem;
-  color: #333;
-}
-
-.courses-card button {
-  background-color: #cd9b3f;
-  color: white;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
-.courses-card button:hover {
-  background-color: #cead60;
+.course-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.course-cover {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.course-info {
+  padding: 15px;
+}
+
+.course-info h3 {
+  font-size: 1.1rem;
+  color: #7d380a;
+  margin-bottom: 6px;
+}
+
+.course-info p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.no-courses-text {
+  color: #777;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 40px;
 }

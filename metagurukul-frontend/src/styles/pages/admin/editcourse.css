@@ -1,0 +1,142 @@
+/* Container */
+.edit-course {
+  padding: 40px;
+  margin: 0 auto;
+  width: 95%;
+  max-width: 1100px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Page Title */
+.edit-course h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #7d380a;
+  text-align: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+/* Form Card */
+.edit-course form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  background: #fff;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Make description span across both columns */
+.edit-course textarea[name="description"] {
+  grid-column: span 2;
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Input fields */
+.edit-course input,
+.edit-course textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.edit-course input:focus,
+.edit-course textarea:focus {
+  border-color: #7d380a;
+  background: #fff;
+  outline: none;
+  box-shadow: 0px 0px 6px rgba(125, 56, 10, 0.3);
+}
+
+/* Section Title (Course Days) */
+.edit-course h3 {
+  grid-column: span 2;
+  font-size: 1.5rem;
+  margin-top: 30px;
+  color: #7d380a;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* Each Day Box */
+.day-box {
+  grid-column: span 2;
+  background: #fdf9f6;
+  border: 1px solid #e5d3c1;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.day-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.day-box h4 {
+  color: #7d380a;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.edit-course button {
+  background: linear-gradient(135deg, #7d380a, #cd9b3f);
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}
+
+.edit-course button:hover {
+  background: linear-gradient(135deg, #cd9b3f, #7d380a);
+  transform: translateY(-2px);
+}
+
+/* + Add Day Button */
+.edit-course button[type="button"] {
+  grid-column: span 2;
+  justify-self: center;
+  width: fit-content;
+  margin-top: 15px;
+  background: #f0e0c9;
+  color: #7d380a;
+  font-weight: 600;
+  box-shadow: none;
+  border: 2px solid #e5cba6;
+}
+
+.edit-course button[type="button"]:hover {
+  background: #7d380a;
+  color: white;
+  border-color: #7d380a;
+}
+
+/* Save Changes Button */
+.edit-course button[type="submit"] {
+  grid-column: span 2;
+  justify-self: center;
+  margin-top: 20px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

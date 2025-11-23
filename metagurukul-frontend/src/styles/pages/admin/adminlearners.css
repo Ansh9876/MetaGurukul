@@ -1,0 +1,40 @@
+.manage-users {
+  padding: 20px;
+}
+
+.manage-users h2 {
+  margin-bottom: 20px;
+  color: #7d380a;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.enable-btn, .disable-btn {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.enable-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.disable-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.enable-btn:hover, .disable-btn:hover {
+  opacity: 0.8;
+}

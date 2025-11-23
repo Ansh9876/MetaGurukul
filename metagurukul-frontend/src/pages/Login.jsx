@@ -20,11 +20,18 @@ const Login = () => {
 
        
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.role);
       localStorage.setItem("email", email);
+      localStorage.setItem("name", res.data.name);
 
       setMessage("Login successful 🎉");
+
       setTimeout(() => {
-        navigate("/");
+        if (res.data.role === "admin") {
+          navigate("/admin-dashboard"); 
+        } else {
+          navigate("/");
+        }
       }, 1000);
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed ❌");

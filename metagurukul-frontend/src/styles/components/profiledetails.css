@@ -1,0 +1,37 @@
+.profile-details {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  max-width: 500px;
+}
+
+.details-form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.details-form p,
+.details-form input,
+.details-form textarea {
+  margin-top: 5px;
+  width: 100%;
+  padding: 8px;
+}
+
+.details-form input,
+.details-form textarea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.details-form button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: #cd9b3f;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}

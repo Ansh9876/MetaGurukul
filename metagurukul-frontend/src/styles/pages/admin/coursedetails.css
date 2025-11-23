@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.course-detail-container {
+  position: relative;
+  width: 100%;
+  background-color: #faf6ef;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Back Button */
+.back-btn-top {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  background: rgba(125, 56, 10, 0.7);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.back-btn-top:hover {
+  background: rgba(125, 56, 10, 0.9);
+  transform: scale(1.05);
+}
+
+/* Banner */
+.course-banner {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  overflow: hidden;
+}
+
+.course-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.course-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(125, 56, 10, 0.8));
+}
+
+.course-banner-text {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  max-width: 600px;
+}
+
+.course-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.course-subtitle {
+  font-size: 1.2rem;
+  color: #f0e8da;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+.start-btn {
+  background: linear-gradient(90deg, #cd9b3f, #855535);
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(133, 85, 53, 0.4);
+}
+.start-btn:hover {
+  background: linear-gradient(90deg, #cead60, #7d380a);
+  transform: scale(1.05);
+}
+
+/* Progress Bar */
+.progress-wrapper {
+  margin-top: 25px;
+}
+.progress-wrapper p {
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.progress-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 80%;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #cd9b3f, #cead60);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* Course Info Section */
+.course-info-section {
+  background: #fff;
+  color: #222;
+  padding: 60px 80px;
+  border-radius: 25px 25px 0 0;
+  margin-top: -40px;
+  box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.course-info-section h2 {
+  font-size: 2.2rem;
+  color: #7d380a;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.course-info-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.course-info-section li {
+  font-size: 1.1rem;
+  margin: 12px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.course-info-section li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #cd9b3f;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .course-banner-text {
+    left: 30px;
+    bottom: 40px;
+    max-width: 90%;
+  }
+  .course-title {
+    font-size: 2.2rem;
+  }
+  .course-subtitle {
+    font-size: 1rem;
+  }
+  .start-btn {
+    font-size: 0.95rem;
+  }
+  .course-info-section {
+    padding: 40px 25px;
+  }
+}
+
+.restricted-box {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff4d4d;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: #ff4d4d;
+  text-align: center;
+  font-weight: 500;
+}
+/* ---------- Payment Popup ---------- */
+.payment-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.payment-popup {
+  background: #fff;
+  color: #333;
+  border-radius: 15px;
+  padding: 30px;
+  width: 340px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  animation: popupFade 0.3s ease-in-out;
+}
+
+.payment-popup h3 {
+  margin-bottom: 10px;
+}
+
+.popup-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.confirm-btn, .cancel-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.confirm-btn {
+  background: #cd9b3f;
+  color: white;
+}
+
+.cancel-btn {
+  background: #ddd;
+  color: #333;
+}
+
+@keyframes popupFade {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- Paid Course Price Box ---------- */
+.paid-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.paid-box .price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #cead60;
+}
+
+.buy-btn {
+  background: #7d380a;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.buy-btn:hover {
+  background: #cead60;
+  color: #000;
+}

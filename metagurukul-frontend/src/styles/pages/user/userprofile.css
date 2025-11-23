@@ -1,16 +1,10 @@
 .myprofile-container {
-  display: flex;
-  min-height: 100vh;
-  background-color: #f0f4f8;
-}
-
-.profile-content {
-  flex: 1;
   padding: 40px;
   background-color: #fff;
+  min-height: 100vh;
 }
 
-.profile-content h1 {
+.myprofile-container h1 {
   font-size: 32px;
   margin-bottom: 20px;
   color: #2b6cb0;

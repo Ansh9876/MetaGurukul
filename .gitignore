@@ -17,3 +17,6 @@ dist/
 
 # Uploaded files
 uploads/
+
+metagurukul-backend/.env
+metagurukul-frontend/.env
