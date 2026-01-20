@@ -36,7 +36,7 @@ const AdminUserAccess = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   const updateAccess = (item, type, field, value) => {
     setAccess((prev) => {

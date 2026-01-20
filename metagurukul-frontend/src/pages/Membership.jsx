@@ -6,7 +6,7 @@ const Membership = () => {
         <Layout>
             <div className="membership-page">
                 <div className="membership-img">
-                    <img  alt="Membership Page Image" src="/membership-pg-img"></img>
+                    <img  alt="Membership" src="/membership-pg-img"></img>
                 </div>
                 <h2 className="membership-title">MetaGurukul Membership</h2>
                 <div className="membership-description">
