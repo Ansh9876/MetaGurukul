@@ -4,7 +4,7 @@ import axios from "axios";
 
 const UserProfile = () => {
   const [name, setName] = useState(localStorage.getItem("name") || "User");
-  const [email, setEmail] = useState(localStorage.getItem("email") || "user@example.com");
+  const [email] = useState(localStorage.getItem("email") || "user@example.com");
   const [profileImage, setProfileImage] = useState(null);
   const [initial, setInitial] = useState("?");
   const [passwordForm, setPasswordForm] = useState({

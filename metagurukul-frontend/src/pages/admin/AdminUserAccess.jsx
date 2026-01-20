@@ -13,28 +13,28 @@ const AdminUserAccess = () => {
   const [bundles, setBundles] = useState([]);
   const [access, setAccess] = useState([]);
 
-  const fetchData = async () => {
-    try {
-      const token = localStorage.getItem("token");
-
-      const userRes = await axios.get(
-        `https://metagurukul1.onrender.com/api/admin/user/${id}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
-      const courseRes = await axios.get("https://metagurukul1.onrender.com/api/courses");
-      const bundleRes = await axios.get("https://metagurukul1.onrender.com/api/bundles");
-
-      setUser(userRes.data.user);
-      setAccess(userRes.data.access);
-      setCourses(courseRes.data);
-      setBundles(bundleRes.data);
-    } catch (err) {
-      console.error("Error loading access:", err);
-    }
-  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const userRes = await axios.get(
+          `https://metagurukul1.onrender.com/api/admin/user/${id}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+
+        const courseRes = await axios.get("https://metagurukul1.onrender.com/api/courses");
+        const bundleRes = await axios.get("https://metagurukul1.onrender.com/api/bundles");
+
+        setUser(userRes.data.user);
+        setAccess(userRes.data.access);
+        setCourses(courseRes.data);
+        setBundles(bundleRes.data);
+      } catch (err) {
+        console.error("Error loading access:", err);
+      }
+    };
     fetchData();
   }, []);
 

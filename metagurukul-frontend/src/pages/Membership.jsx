@@ -6,12 +6,12 @@ const Membership = () => {
         <Layout>
             <div className="membership-page">
                 <div className="membership-img">
-                    <img  src="/membership-pg-img"></img>
+                    <img  alt="Membership Page Image" src="/membership-pg-img"></img>
                 </div>
                 <h2 className="membership-title">MetaGurukul Membership</h2>
                 <div className="membership-description">
                     <p>🎓 Become Intellectual & excel in life</p>
-                    <p>🚀 Easy way to acqiure knowledge</p>
+                    <p>🚀 Easy way to acquire knowledge</p>
                     <p>💡 Books to read an why</p>
                 </div>
                 <h2 className="chooseplan-title">Yearly plan</h2>

@@ -9,7 +9,7 @@ const CourseDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [course, setCourse] = useState(null);
-  const [progress, setProgress] = useState(0);
+
   const [hasAccess, setHasAccess] = useState(true);
   const [showPaymentPopup, setShowPaymentPopup] = useState(false);
 
@@ -122,16 +122,7 @@ const CourseDetail = () => {
               </button>
             )}
 
-            {/* Progress Bar */}
-            <div className="progress-wrapper">
-              <p>Progress: {progress}%</p>
-              <div className="progress-bar">
-                <div
-                  className="progress-fill"
-                  style={{ width: `${progress}%` }}
-                ></div>
-              </div>
-            </div>
+          
           </div>
         </div>
 
