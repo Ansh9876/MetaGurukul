@@ -26,57 +26,57 @@ const Home = () => {
     fetchCourses();
   }, []);
 
-    return (
-        <Layout>
-            <section className="hero">
-                <div className="hero-overlay"></div>
-                <img src="/login-bg.jpg" alt="Hero Background" className="hero-image" />
+  return (
+    <Layout>
+      <section className="hero">
+        <div className="hero-overlay"></div>
+        <img src="/login-bg.jpg" alt="Hero Background" className="hero-image" />
 
-                <div className="hero-content">
-                    <span className="brand">
-                        Meta<span className="highlight">Gurukul</span>
-                    </span>
-                    <h3>Your Ultimate Streaming Platform For Learning</h3>
+        <div className="hero-content">
+          <span className="brand">
+            Meta<span className="highlight">Gurukul</span>
+          </span>
+          <h3>Your Ultimate Streaming Platform For Learning</h3>
 
-                    {/* ✅ Explore Courses Button */}
-                    <div className="hero-buttons">
-                        <button
-                            className="cta-btn primary"
-                            onClick={() => navigate("/courses")} // redirect to /courses page
-                        >
-                            Explore Courses
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-
-            {/* ===== LATEST COURSES SECTION ===== */}
-            <section className="trending-section">
-                <h2>🆕 Latest Courses</h2>
-
-        <div className="course-grid">
-          {latestCourses.length > 0 ? (
-            latestCourses.map((course) => (
-              <div
-                className="course-card"
-                key={course._id}
-                onClick={() => navigate(`/courses/${course._id}`)} // ✅ Redirect on click
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                  src={course.coverImage || "https://via.placeholder.com/300x150?text=Course+Image"}
-                  alt={course.title}
-                />
-                <h3>{course.title}</h3>
-                <p>{course.description}</p>
-              </div>
-            ))
-          ) : (
-            <p className="loading-text">Loading latest courses...</p>
-          )}
+          {/* ✅ Explore Courses Button */}
+          <div className="hero-buttons">
+            <button
+              className="cta-btn primary"
+              onClick={() => navigate("/courses")} // redirect to /courses page
+            >
+              Explore Courses
+            </button>
+          </div>
         </div>
+      </section>
 
+        {/* ===== LATEST COURSES SECTION ===== */}
+        <section className="trending-section">
+          <h2>🆕 Latest Courses</h2>
+
+          <div className="home-course-grid">
+            {latestCourses.length > 0 ? (
+              latestCourses.map((course) => (
+                <div
+                  className="home-course-card"
+                  key={course._id}
+                  onClick={() => navigate(`/courses/${course._id}`)}
+                >
+                  <img
+                    src={
+                      course.coverImage ||
+                      "https://via.placeholder.com/300x150?text=Course+Image"
+                    }
+                    alt={course.title}
+                  />
+                  <h3>{course.title}</h3>
+                  <p>{course.description}</p>
+                </div>
+              ))
+            ) : (
+              <p className="loading-text">Loading latest courses...</p>
+            )}
+          </div>
         <br />
         <br />
         <br />

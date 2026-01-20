@@ -1,62 +1,97 @@
-.courses-page {
+/* ✅ Scoped CSS ONLY for Courses page */
+
+.coursesPg {
   padding: 40px 60px;
   background-color: #faf6ef;
   min-height: 100vh;
+  font-family: "Poppins", sans-serif;
 }
 
-.courses-pg-heading {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.coursesPg__heading {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
   color: #7d380a;
-  font-weight: bold;
+  font-weight: 800;
+  letter-spacing: 0.4px;
 }
 
-.courses-grid {
+.coursesPg__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 25px;
 }
 
-.course-card {
+/* ✅ Cards */
+.coursesPg__card {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.course-card:hover {
-  transform: scale(1.04);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+.coursesPg__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
 }
 
-.course-cover {
+/* Cover Image */
+.coursesPg__cover {
   width: 100%;
-  height: 150px;
+  height: 170px;
   object-fit: cover;
+  pointer-events: none;
 }
 
-.course-info {
-  padding: 15px;
+/* Info */
+.coursesPg__info {
+  padding: 16px 16px 18px;
 }
 
-.course-info h3 {
-  font-size: 1.1rem;
+.coursesPg__title {
+  font-size: 1.15rem;
+  font-weight: 800;
   color: #7d380a;
-  margin-bottom: 6px;
+  margin: 0 0 8px 0;
 }
 
-.course-info p {
-  color: #555;
-  font-size: 0.9rem;
+.coursesPg__desc {
+  color: #444;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  opacity: 0.9;
+
+  /* ✅ limit desc lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 42px;
 }
 
-.no-courses-text {
+/* Empty state */
+.coursesPg__empty {
   color: #777;
   font-size: 1rem;
   text-align: center;
   margin-top: 40px;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .coursesPg {
+    padding: 25px 18px;
+  }
+
+  .coursesPg__heading {
+    font-size: 1.8rem;
+  }
+
+  .coursesPg__cover {
+    height: 150px;
+  }
 }

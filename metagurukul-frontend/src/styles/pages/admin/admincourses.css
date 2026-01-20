@@ -1,85 +1,147 @@
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+/* ✅ FULLY SCOPED CSS (Will NOT affect other pages) */
+
+.admin-courses-page {
+  padding: 30px;
+  background: #fffaf3;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
 }
 
-.course-card {
-  background: #fff;
+.admin-courses-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.admin-courses-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #7d380a;
+  margin: 0;
+}
+
+.admin-courses-create-btn {
+  background: linear-gradient(135deg, #cd9b3f, #7d380a);
+  color: white;
+  border: none;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.admin-courses-create-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(125, 56, 10, 0.25);
+}
+
+.admin-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.admin-courses-empty {
+  color: #333;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.admin-course-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  z-index: 1;
+  transition: 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.course-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.admin-course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.14);
 }
 
-/* Fix: prevent image from overlapping buttons */
-.course-card img {
+.admin-course-img {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  pointer-events: none; /* 👈 critical fix */
+  pointer-events: none; /* ✅ so image never blocks clicks */
 }
 
-.course-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #333;
+.admin-course-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #7d380a;
+  margin: 14px 16px 6px;
 }
 
-.course-card p {
-  color: #555;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  height: 45px;
+.admin-course-desc {
+  color: #444;
+  font-size: 0.92rem;
+  margin: 0 16px 16px;
+  line-height: 1.4;
+
+  /* clamp text to avoid big cards */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: 42px;
 }
 
-.actions {
+.admin-course-actions {
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 12px;
+  padding: 0 16px 16px;
   margin-top: auto;
-  position: relative;
-  z-index: 5;
 }
 
-/* Buttons */
-.actions button {
+.admin-course-actions a {
   flex: 1;
-  padding: 0.6rem;
+  text-decoration: none;
+}
+
+.admin-course-edit-btn,
+.admin-course-delete-btn {
+  width: 100%;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 800;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: 0.25s ease;
 }
 
-.actions button:first-child {
-  background-color: #cd9b3f;
+.admin-course-edit-btn {
+  background: #cd9b3f;
   color: white;
 }
 
-.actions button:first-child:hover {
-  background-color: #7d380a;
+.admin-course-edit-btn:hover {
+  background: #7d380a;
 }
 
-.actions button:last-child {
-  background-color: #b33a2f;
+.admin-course-delete-btn {
+  background: #b33a2f;
   color: white;
 }
 
-.actions button:last-child:hover {
-  background-color: #e64a19;
+.admin-course-delete-btn:hover {
+  background: #e64a19;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .admin-courses-page {
+    padding: 18px;
+  }
+
+  .admin-course-img {
+    height: 160px;
+  }
 }

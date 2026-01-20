@@ -22,30 +22,33 @@ const Courses = () => {
 
   return (
     <Layout>
-      <div className="courses-page">
-        <h2 className="courses-pg-heading">Explore Courses</h2>
+      <div className="coursesPg">
+        <h2 className="coursesPg__heading">Explore Courses</h2>
 
-        <div className="courses-grid">
+        <div className="coursesPg__grid">
           {courses.length === 0 ? (
-            <p className="no-courses-text">No courses available yet.</p>
+            <p className="coursesPg__empty">No courses available yet.</p>
           ) : (
             courses.map((course) => (
               <div
                 key={course._id}
-                className="course-card"
+                className="coursesPg__card"
                 onClick={() => navigate(`/courses/${course._id}`)}
               >
                 <img
-                  className="course-cover"
+                  className="coursesPg__cover"
                   src={
                     course.coverImage ||
                     "https://via.placeholder.com/300x150?text=Course+Image"
                   }
                   alt={course.title}
                 />
-                <div className="course-info">
-                  <h3>{course.title}</h3>
-                  <p>{course.description?.slice(0, 80)}...</p>
+
+                <div className="coursesPg__info">
+                  <h3 className="coursesPg__title">{course.title}</h3>
+                  <p className="coursesPg__desc">
+                    {course.description ? course.description.slice(0, 80) : "No description"}...
+                  </p>
                 </div>
               </div>
             ))

@@ -19,6 +19,7 @@ const AdminLearners = () => {
     }
   };
 
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -46,7 +47,7 @@ const AdminLearners = () => {
               <td>
                 <button
                   className="view-access-btn"
-                  onClick={() => navigate(`/admin/learners/${u._id}`)}
+                  onClick={() => navigate(`/admin-dashboard/view-access/${u._id}`)}
                 >
                   View Access
                 </button>

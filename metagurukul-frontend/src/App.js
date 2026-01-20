@@ -18,9 +18,10 @@ import AdminHome from './pages/admin/AdminHome';
 import AdminCourses from './pages/admin/AdminCourses';
 import CreateCourse from './pages/admin/CreateCourse';
 import EditCourse from './pages/admin/EditCourses';
- import AdminLearners from './pages/admin/AdminLearners';
+import AdminLearners from './pages/admin/AdminLearners';
 import AdminAdmins from './pages/admin/AdminAdmins';
 import AdminBundles from './pages/admin/AdminBundles';
+import AdminUserAccess from './pages/admin/AdminUserAccess';
 
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -72,6 +73,7 @@ function App() {
            <Route path="admin-learners" element={<AdminLearners />} />
           <Route path="admin-admins" element={<AdminAdmins />} />
           <Route path="admin-bundles" element={<AdminBundles/>}/>
+          <Route path="view-access/:id" element={<AdminUserAccess/>}></Route>
         </Route>
       </Routes>
     </Router>

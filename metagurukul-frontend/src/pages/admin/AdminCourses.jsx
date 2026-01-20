@@ -40,36 +40,48 @@ const AdminCourses = () => {
 
 
   return (
-    <div className="admin-courses">
-      <div className="admin-header">
-        <h2>Manage Courses</h2>
-        <Link to="/admin-dashboard/create-course">
-          <button className="create-btn">+ Create Course</button>
-        </Link>
-      </div>
-
-      <div className="courses-grid">
-        {courses.length === 0 ? (
-          <p>No courses yet. Click "Create Course" to add one.</p>
-        ) : (
-          courses.map((course) => (
-            <div key={course.id} className="course-card">
-              <img src={course.coverImage} alt={course.title} />
-              <h3>{course.title}</h3>
-              <p>{course.description}</p>
-
-              <div className="actions">
-                <Link to={`/admin-dashboard/edit-course/${course._id}`}>
-                  <button>Edit</button>
-                </Link>
-                <button onClick={() => handleDelete(course._id)}>Delete</button>
-              </div>
-            </div>
-          ))
-        )}
-      </div>
+  <div className="admin-courses-page">
+    <div className="admin-courses-header">
+      <h2>Manage Courses</h2>
+      <Link to="/admin-dashboard/create-course">
+        <button className="admin-courses-create-btn">+ Create Course</button>
+      </Link>
     </div>
-  );
-};
 
+    <div className="admin-courses-grid">
+      {courses.length === 0 ? (
+        <p className="admin-courses-empty">
+          No courses yet. Click "Create Course" to add one.
+        </p>
+      ) : (
+        courses.map((course) => (
+          <div key={course._id} className="admin-course-card">
+            <img
+              src={course.coverImage}
+              alt={course.title}
+              className="admin-course-img"
+            />
+
+            <h3 className="admin-course-title">{course.title}</h3>
+            <p className="admin-course-desc">{course.description}</p>
+
+            <div className="admin-course-actions">
+              <Link to={`/admin-dashboard/edit-course/${course._id}`}>
+                <button className="admin-course-edit-btn">Edit</button>
+              </Link>
+
+              <button
+                className="admin-course-delete-btn"
+                onClick={() => handleDelete(course._id)}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  </div>
+);
+};
 export default AdminCourses;
