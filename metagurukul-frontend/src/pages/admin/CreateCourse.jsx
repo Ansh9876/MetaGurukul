@@ -22,7 +22,7 @@ const CreateCourse = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/courses", {
+      const res = await axios.post("https://metagurukul1.onrender.com/api/courses", {
         title: formData.title,
         description: formData.description,
         coverImage: formData.coverImage || "https://via.placeholder.com/150",

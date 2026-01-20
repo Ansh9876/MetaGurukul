@@ -12,7 +12,7 @@ const AdminCourses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/courses");
+        const res = await axios.get("https://metagurukul1.onrender.com/api/courses");
         setCourses(res.data);
       } catch (err) {
         console.error(err);
@@ -30,7 +30,7 @@ const AdminCourses = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/courses/${id}`);
+      await axios.delete(`https://metagurukul1.onrender.com/api/courses/${id}`);
       setCourses(courses.filter((c) => c._id !== id));
     } catch (err) {
       console.error(err);

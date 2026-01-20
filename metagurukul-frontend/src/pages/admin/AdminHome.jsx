@@ -10,8 +10,8 @@ const AdminHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userRes = await axios.get("http://localhost:5000/api/users");
-        const courseRes = await axios.get("http://localhost:5000/api/courses");
+        const userRes = await axios.get("https://metagurukul1.onrender.com/api/users");
+        const courseRes = await axios.get("https://metagurukul1.onrender.com/api/courses");
         setTotalUsers(userRes.data.length);
         setTotalCourses(courseRes.data.length);
       } catch (error) {

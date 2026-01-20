@@ -21,7 +21,7 @@ const EditCourse = () => {
   useEffect(() => {
   const fetchCourse = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/courses/${id}`);
+      const res = await axios.get(`https://metagurukul1.onrender.com/api/courses/${id}`);
       const c = res.data;
 
       setCourse({
@@ -100,7 +100,7 @@ const EditCourse = () => {
       price: course.price,
     };
 
-    await axios.put(`http://localhost:5000/api/courses/${id}`, updatedCourse);
+    await axios.put(`https://metagurukul1.onrender.com/api/courses/${id}`, updatedCourse);
     alert("✅ Course updated successfully!");
     navigate("/admin-dashboard/admin-courses");
   } catch (err) {

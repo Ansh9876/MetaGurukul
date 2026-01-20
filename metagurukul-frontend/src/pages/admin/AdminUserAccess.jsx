@@ -18,12 +18,12 @@ const AdminUserAccess = () => {
       const token = localStorage.getItem("token");
 
       const userRes = await axios.get(
-        `http://localhost:5000/api/admin/user/${id}`,
+        `https://metagurukul1.onrender.com/api/admin/user/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      const courseRes = await axios.get("http://localhost:5000/api/courses");
-      const bundleRes = await axios.get("http://localhost:5000/api/bundles");
+      const courseRes = await axios.get("https://metagurukul1.onrender.com/api/courses");
+      const bundleRes = await axios.get("https://metagurukul1.onrender.com/api/bundles");
 
       setUser(userRes.data.user);
       setAccess(userRes.data.access);
@@ -59,7 +59,7 @@ const AdminUserAccess = () => {
       const token = localStorage.getItem("token");
 
       await axios.put(
-        `http://localhost:5000/api/admin/user/${id}/access`,
+        `https://metagurukul1.onrender.com/api/admin/user/${id}/access`,
         { access },
         { headers: { Authorization: `Bearer ${token}` } }
       );

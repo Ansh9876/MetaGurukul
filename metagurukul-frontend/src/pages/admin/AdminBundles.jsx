@@ -24,8 +24,8 @@ const AdminBundles = () => {
     const fetchData = async () => {
       try {
         const [bundleRes, courseRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/bundles"),
-          axios.get("http://localhost:5000/api/courses"),
+          axios.get("https://metagurukul1.onrender.com/api/bundles"),
+          axios.get("https://metagurukul1.onrender.com/api/courses"),
         ]);
         setBundles(bundleRes.data);
         setCourses(courseRes.data);
@@ -55,13 +55,13 @@ const AdminBundles = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/bundles/${editId}`, {
+        await axios.put(`https://metagurukul1.onrender.com/api/bundles/${editId}`, {
           ...formData,
           courses: formData.selectedCourses,
         });
         alert("✅ Bundle updated successfully!");
       } else {
-        await axios.post("http://localhost:5000/api/bundles", {
+        await axios.post("https://metagurukul1.onrender.com/api/bundles", {
           ...formData,
           courses: formData.selectedCourses,
         });
@@ -78,7 +78,7 @@ const AdminBundles = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this bundle?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/bundles/${id}`);
+      await axios.delete(`https://metagurukul1.onrender.com/api/bundles/${id}`);
       setBundles(bundles.filter((b) => b._id !== id));
     } catch (error) {
       console.error("Error deleting bundle:", error);

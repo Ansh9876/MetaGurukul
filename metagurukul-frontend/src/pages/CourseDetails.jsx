@@ -17,7 +17,7 @@ const CourseDetail = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/courses/${id}`);
+        const res = await axios.get(`https://metagurukul1.onrender.com/api/courses/${id}`);
         setCourse(res.data);
       } catch (err) {
         console.error("Error fetching course:", err);
@@ -32,7 +32,7 @@ const CourseDetail = () => {
       const token = localStorage.getItem("token");
       if (!token) return;
       try {
-        const res = await axios.get("http://localhost:5000/api/users/access-status", {
+        const res = await axios.get("https://metagurukul1.onrender.com/api/users/access-status", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setHasAccess(res.data.hasFullAccess);

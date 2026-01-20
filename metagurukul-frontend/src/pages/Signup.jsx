@@ -33,7 +33,7 @@ const Signup = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", {
+      const res = await axios.post("https://metagurukul1.onrender.com/api/auth/signup", {
         name: formData.name,
         email: formData.email,
         password: formData.password,

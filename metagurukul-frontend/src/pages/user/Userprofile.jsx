@@ -32,7 +32,7 @@ const UserProfile = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        "http://localhost:5000/api/users/profile",
+        "https://metagurukul1.onrender.com/api/users/profile",
         { name },
         {
           headers: { Authorization: `Bearer ${token}` },

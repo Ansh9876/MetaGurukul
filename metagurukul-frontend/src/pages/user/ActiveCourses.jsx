@@ -9,7 +9,7 @@ const ActiveCourses = () => {
     const fetchActiveCourses = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/user/active-courses", {
+        const res = await axios.get("https://metagurukul1.onrender.com/api/user/active-courses", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setActiveCourses(res.data || []); // ✅ always fallback to []

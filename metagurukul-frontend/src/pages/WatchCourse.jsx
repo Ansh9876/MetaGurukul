@@ -25,7 +25,7 @@ const WatchCourse = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/courses/${id}`);
+        const res = await axios.get(`https://metagurukul1.onrender.com/api/courses/${id}`);
         const data = res.data;
         const list = [
           { title: `${data.title} - Introduction`, link: data.link }, // main first
@@ -47,7 +47,7 @@ const WatchCourse = () => {
     const fetchProgress = async () => {
       if (!token || !playlist.length) return;
       try {
-        const res = await axios.get(`http://localhost:5000/api/progress/${id}`, {
+        const res = await axios.get(`https://metagurukul1.onrender.com/api/progress/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const p = res.data || {};
@@ -200,7 +200,7 @@ const WatchCourse = () => {
   const restoreTimeFromServer = async () => {
     if (!token) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/progress/${id}`, {
+      const res = await axios.get(`https://metagurukul1.onrender.com/api/progress/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const p = res.data || {};
@@ -236,7 +236,7 @@ const WatchCourse = () => {
     if (!token) return;
     try {
       await axios.post(
-        "http://localhost:5000/api/progress/save",
+        "https://metagurukul1.onrender.com/api/progress/save",
         {
           courseId: id,
           moduleIndex,
