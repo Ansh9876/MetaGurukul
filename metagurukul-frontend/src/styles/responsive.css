@@ -1,0 +1,46 @@
+/* Tablets */
+@media (max-width: 992px) {
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    @media (max-width: 768px) {
+
+        .hero-title {
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+    }
+
+    .course-card {
+        width: 100%;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+    .hero-title {
+        font-size: 20px;
+    }
+
+}

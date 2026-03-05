@@ -1,9 +1,12 @@
+import { useEffect } from "react";
+import { App as CapacitorApp } from "@capacitor/app";
+import "./styles/responsive.css";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
-import Courses from './pages/Courses'; 
+import Courses from './pages/Courses';
 import Membership from './pages/Membership';
 import Login from './pages/Login';
-import Signup from './pages/Signup'; 
+import Signup from './pages/Signup';
 import CourseDetail from './pages/CourseDetails';
 import WatchCourse from './pages/WatchCourse';
 
@@ -26,23 +29,33 @@ import AdminUserAccess from './pages/admin/AdminUserAccess';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
+  useEffect(() => {
+    CapacitorApp.addListener("backButton", ({ canGoBack }) => {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        CapacitorApp.exitApp();
+      }
+    });
+  }, []);
+
   return (
     <Router>
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Home />} />
         <Route path="/courses" element={<Courses />} />
-        <Route path="/courses/:id" element={<CourseDetail/>} />
+        <Route path="/courses/:id" element={<CourseDetail />} />
         <Route path="/watch/:id" element={<WatchCourse />} />
-         
+
         <Route path="/membership" element={<Membership />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-         
+
 
         {/* User Dashboard with nesteda routes */}
-        <Route 
-          path="/user-dashboard" 
+        <Route
+          path="/user-dashboard"
           element={
             <ProtectedRoute role="user">
               <UserDashboard />
@@ -56,8 +69,8 @@ function App() {
         </Route>
 
         {/* Admin Dashboard with nested routes */}
-        <Route 
-          path="/admin-dashboard" 
+        <Route
+          path="/admin-dashboard"
           element={
             <ProtectedRoute role="admin">
               <AdminDashboard />
@@ -68,12 +81,12 @@ function App() {
           <Route path="admin-profile" element={<AdminProfile />} />
           <Route path="admin-home" element={<AdminHome />} />
           <Route path="admin-courses" element={<AdminCourses />} />
-          <Route path="create-course" element={<CreateCourse/>} />
-          <Route path="edit-course/:id" element={<EditCourse />} /> 
-           <Route path="admin-learners" element={<AdminLearners />} />
+          <Route path="create-course" element={<CreateCourse />} />
+          <Route path="edit-course/:id" element={<EditCourse />} />
+          <Route path="admin-learners" element={<AdminLearners />} />
           <Route path="admin-admins" element={<AdminAdmins />} />
-          <Route path="admin-bundles" element={<AdminBundles/>}/>
-          <Route path="view-access/:id" element={<AdminUserAccess/>}></Route>
+          <Route path="admin-bundles" element={<AdminBundles />} />
+          <Route path="view-access/:id" element={<AdminUserAccess />}></Route>
         </Route>
       </Routes>
     </Router>

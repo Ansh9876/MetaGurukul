@@ -8,6 +8,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+
 /* --- NAVBAR CONTAINER --- */
 .navbar {
   position: sticky;
@@ -187,6 +188,7 @@ body {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -215,42 +217,114 @@ body {
 /* --- MOBILE STYLES --- */
 @media (max-width: 768px) {
   .navbar {
-    flex-wrap: wrap;
-    padding: 10px 20px;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: relative;
+
   }
 
+  /* keep right section aligned */
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+
+  /* reduce profile icon size slightly */
+  .profile-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  /* better hamburger alignment */
+  .hamburger {
+    margin-left: 8px;
+  }
+
+  .navbar {
+    flex-wrap: nowrap;
+    padding: 10px 15px;
+    height: 70px;
+  }
+
+  /* Smaller logo */
+  .logo {
+    width: 140px;
+    object-fit: contain;
+  }
+
+  /* Smaller profile circle */
+  .profile-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  /* Hamburger spacing */
+  .hamburger {
+    display: flex;
+    margin-left: 10px;
+  }
+
+  /* Mobile dropdown style menu */
   .navbar-links {
     display: none;
     flex-direction: column;
-    width: 100%;
-    background: rgba(206, 173, 96, 0.95);
-    border-radius: 12px;
-    padding: 1rem;
-    margin-top: 1rem;
-    animation: slideDown 0.3s ease forwards;
+    position: absolute;
+    top: 65px;
+    right: 15px;
+    width: 200px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    padding: 10px 0;
+    z-index: 999;
   }
 
+  /* Show menu */
   .navbar-links.active {
     display: flex;
   }
 
-  @keyframes slideDown {
+  /* Menu items */
+  .navbar-links li {
+    list-style: none;
+    width: 100%;
+  }
+
+  .navbar-links a {
+    display: block;
+    padding: 12px 18px;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .navbar-links a:hover {
+    background: #f5e6c2;
+    color: #7d380a;
+  }
+
+  .navbar-links {
+    animation: menuDrop 0.25s ease;
+  }
+
+  @keyframes menuDrop {
     from {
       opacity: 0;
       transform: translateY(-10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
 
-  .hamburger {
-    display: flex;
-  }
-
+  /* Login button */
   .login-btn {
     font-size: 0.9rem;
     padding: 6px 14px;
   }
+
 }

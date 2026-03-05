@@ -341,17 +341,140 @@ body {
   }
 }
 
-/* ===== RESPONSIVE ===== */
+/* =========================
+   MOBILE RESPONSIVE FIXES
+========================= */
+
 @media (max-width: 768px) {
+
+  /* HERO SECTION */
+  .hero {
+    padding: 90px 20px 40px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
   .hero-content .brand {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
+    line-height: 1.2;
   }
 
-  .hero-input-group input {
-    width: 180px;
+  .hero-content h3 {
+    font-size: 1rem;
+    margin-top: 10px;
   }
 
-  .MentorCard {
+  .cta-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  /* TRENDING COURSES */
+  .trending-section {
+    padding: 3rem 6%;
+  }
+
+  .home-course-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .home-course-card{
+    margin:0 auto;
+    max-width:320px;
+  }
+
+  .home-course-card h3{
+    font-size:1.1rem;
+  }
+
+  .home-course-card p{
+    font-size:0.9rem;
+  }
+
+  /* IMAGE SECTION */
+  .image-container {
     flex-direction: column;
+    text-align: center;
   }
+
+  .center-image {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .image-text {
+    padding-top: 15px;
+  }
+
+  /* WHY CHOOSE */
+  .features-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .feature-box{
+    padding:25px 18px;
+  }
+
+  .feature-box h3{
+    font-size:1.2rem;
+  }
+
+  .feature-box p{
+    font-size:0.9rem;
+  }
+
+
+  /* MENTOR SECTION */
+  .MentorInfo{
+    padding: 0 15px;
+    text-align: left;
+  }
+
+  .MentorInfo h2{
+    font-size: 1.5rem;
+    text-align:center;
+    margin-bottom:15px;
+  }
+
+  .MentorInfo ul{
+    padding-left:20px;
+    line-height:1.6;
+  }
+
+  .MentorInfo li{
+    margin-bottom:8px;
+    font-size:0.95rem;
+  }
+
+  .MentorInfo p{
+    font-size:0.95rem;
+    line-height:1.7;
+    margin-top:15px;
+  }
+
+}
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+
+  .hero-content .brand {
+    font-size: 3rem;
+  }
+
+  .home-course-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 }
