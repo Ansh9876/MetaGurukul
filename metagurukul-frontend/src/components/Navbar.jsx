@@ -94,7 +94,7 @@ const Navbar = () => {
                       : "/user-dashboard/user-profile"
                   }
                 >
-                  My Profile
+                  My profile
                 </Link>
 
                 <button onClick={handleLogout}>Logout</button>
