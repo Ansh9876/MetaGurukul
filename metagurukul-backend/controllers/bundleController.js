@@ -53,3 +53,32 @@ exports.updateBundle = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// ✅ Get Single Bundle
+exports.getBundleById = async (req, res) => {
+
+  try{
+
+    const bundle = await Bundle.findById(req.params.id)
+    .populate("courses","title coverImage description");
+
+    if(!bundle){
+
+      return res.status(404).json({
+        message:"Bundle not found"
+      });
+
+    }
+
+    res.json(bundle);
+
+  }
+  catch(err){
+
+    res.status(500).json({
+      error:err.message
+    });
+
+  }
+
+};
