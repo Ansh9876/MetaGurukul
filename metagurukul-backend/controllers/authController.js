@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 // Signup
 exports.signup = async (req, res) => {
-  const { name, email, password, whatsNumber } = req.body; 
+  const { name, email, password, whatsNumber } = req.body;
 
   try {
     let user = await User.findOne({ email });
@@ -22,7 +22,7 @@ exports.signup = async (req, res) => {
 
     await user.save();
     const token = jwt.sign(
-      { id: user._id, role: user.role },    
+      { id: user._id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "2d" }
     );
@@ -39,30 +39,59 @@ exports.signup = async (req, res) => {
 };
 
 // Login
+// Login
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Email and password are required"
+      });
+    }
+
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "User not found" });
+
+    if (!user) {
+      return res.status(400).json({
+        message: "User not found"
+      });
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
-    // Include role in token
+    if (!isMatch) {
+      return res.status(400).json({
+        message: "Invalid credentials"
+      });
+    }
+
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      {
+        id: user._id,
+        role: user.role
+      },
       process.env.JWT_SECRET,
-      { expiresIn: "2d" }
+      {
+        expiresIn: "2d"
+      }
     );
 
     res.status(200).json({
       token,
-      role: user.role, // send role separately too
+      role: user.role,
       email: user.email,
-      name : user.name  
+      name: user.name
     });
+
   } catch (error) {
-    res.status(500).json({ error: error.message });
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Something went wrong. Please try again."
+    });
+
   }
 };
