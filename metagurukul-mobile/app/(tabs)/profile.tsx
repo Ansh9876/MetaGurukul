@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import * as SecureStore from 'expo-secure-store';
 import { useEffect, useState } from "react";
 import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 
 export default function Profile() {
 
@@ -19,10 +20,28 @@ export default function Profile() {
     }
   };
 
-  const handleLogout = async () => {
-    await SecureStore.deleteItemAsync("token");
-    await SecureStore.deleteItemAsync("user");
-    router.replace("/auth?mode=loginr"); // 🔥 go to auth properly
+  const handleLogout = () => {
+
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to logout?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Logout",
+          style: "destructive",
+          onPress: async () => {
+            await SecureStore.deleteItemAsync("token");
+            await SecureStore.deleteItemAsync("user");
+            router.replace("/auth?mode=login");
+          },
+        },
+      ]
+    );
+
   };
 
   return (
@@ -30,8 +49,11 @@ export default function Profile() {
     <SafeAreaView style={styles.container}>
 
       {/* HEADER */}
-      <View style={styles.header}>
+      <View>
         <Text style={styles.title}>My Profile</Text>
+        <Text style={styles.subtitle}>
+          Manage your account information
+        </Text>
       </View>
 
       {/* PROFILE CARD */}
@@ -54,6 +76,11 @@ export default function Profile() {
 
         </View>
       )}
+
+      <View style={styles.versionCard}>
+        <Text style={styles.versionLabel}>App Version</Text>
+        <Text style={styles.versionValue}>1.0.0</Text>
+      </View>
 
       {/* LOGOUT */}
       <TouchableOpacity
@@ -87,6 +114,12 @@ const styles = StyleSheet.create({
     color: "#333"
   },
 
+  subtitle: {
+    color: "#777",
+    fontSize: 14,
+    marginTop: 4,
+  },
+
   card: {
     backgroundColor: "#fff",
     borderRadius: 20,
@@ -101,20 +134,27 @@ const styles = StyleSheet.create({
   },
 
   avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 90,
+    height: 90,
+    borderRadius: 45,
     backgroundColor: "#7d380a",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 15
-  },
+    marginBottom: 18,
+    borderWidth: 4,
+    borderColor: "#fff",
+    elevation: 6,
+    shadowColor: "#000",
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+},
 
   avatarText: {
     color: "#fff",
-    fontSize: 28,
+    fontSize: 34,
     fontWeight: "bold"
-  },
+},
 
   name: {
     fontSize: 20,
@@ -143,6 +183,30 @@ const styles = StyleSheet.create({
   infoValue: {
     fontSize: 16,
     fontWeight: "600"
+  },
+
+  versionCard: {
+    backgroundColor: "#fff",
+    borderRadius: 15,
+    padding: 18,
+    marginBottom: 20,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+  },
+
+  versionLabel: {
+    color: "#777",
+    fontSize: 13,
+  },
+
+  versionValue: {
+    marginTop: 4,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
   },
 
   logoutBtn: {

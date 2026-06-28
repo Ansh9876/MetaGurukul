@@ -4,6 +4,7 @@ import * as SecureStore from "expo-secure-store";
 import { ActivityIndicator, View } from "react-native";
 import { PlayerProvider } from "@/context/PlayerContext";
 
+
 export default function RootLayout() {
   const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);

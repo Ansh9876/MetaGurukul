@@ -1,5 +1,5 @@
 
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image, RefreshControl, } from "react-native";
 import { Colors } from "../../constants/theme";
 import { useEffect, useState } from "react";
 import { API } from "../../services/api";
@@ -26,7 +26,7 @@ export default function Home() {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-
+  const [refreshing, setRefreshing] = useState(false);
 
   type Course = {
 
@@ -132,9 +132,34 @@ export default function Home() {
 
   };
 
+  const onRefresh = async () => {
+
+    setRefreshing(true);
+
+    await Promise.all([
+      fetchCourses(),
+      fetchBundles(),
+      loadProgress(),
+      loadUser()
+    ]);
+
+    setRefreshing(false);
+
+  };
+
   return (
 
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={["#7d380a"]}
+          tintColor="#7d380a"
+        />
+      }
+    >
 
       <View style={styles.header}>
 

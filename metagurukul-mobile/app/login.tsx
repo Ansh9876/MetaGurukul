@@ -3,6 +3,7 @@ import { useState } from "react";
 import { API } from "../services/api";
 import { router } from "expo-router";
 import * as SecureStore from 'expo-secure-store';
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Login() {
 
@@ -10,6 +11,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = async () => {
 
@@ -87,23 +89,33 @@ export default function Login() {
 
             />
 
-            <TextInput
+            <View style={styles.passwordContainer}>
 
-                placeholder="Password"
-                placeholderTextColor="#777"
-                secureTextEntry
+                <TextInput
+                    placeholder="Password"
+                    placeholderTextColor="#777"
+                    secureTextEntry={!showPassword}
+                    style={styles.passwordInput}
+                    value={password}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onChangeText={(text) => {
+                        setPassword(text);
+                        setError("");
+                    }}
+                />
 
-                style={[styles.input, { color: "#000" }]}
+                <TouchableOpacity
+                    onPress={() => setShowPassword(!showPassword)}
+                >
+                    <Ionicons
+                        name={showPassword ? "eye-off" : "eye"}
+                        size={22}
+                        color="#777"
+                    />
+                </TouchableOpacity>
 
-                value={password}
-                autoCapitalize="none"
-                autoCorrect={false}
-                onChangeText={(text) => {
-                    setPassword(text);
-                    setError("");
-                }}
-
-            />
+            </View>
 
             {error ? (
                 <Text style={styles.error}>
@@ -185,5 +197,20 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         marginLeft: 4
     },
+    passwordContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#ddd",
+        borderRadius: 12,
+        backgroundColor: "#fafafa",
+        paddingHorizontal: 14,
+        marginBottom: 15,
+    },
 
+    passwordInput: {
+        flex: 1,
+        paddingVertical: 14,
+        color: "#000",
+    },
 });
