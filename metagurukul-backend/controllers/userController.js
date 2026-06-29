@@ -1,4 +1,5 @@
-const User = require("../models/User");
+const User = require("../models/User"); 
+const UserAccess = require("../models/UserAccessModel");
 
 exports.getProfile = async (req, res) => {
   try {
@@ -18,6 +19,28 @@ exports.getAccessStatus = async (req, res) => {
     res.json({ hasFullAccess: user.hasFullAccess });
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteAccount = async (req, res) => {
+  try {
+
+    await User.findByIdAndDelete(req.user.id);
+
+    await UserAccess.deleteMany({
+      userId: req.user.id,
+    });
+
+    res.json({
+      message: "Account deleted successfully",
+    });
+
+  } catch (err) {
+
+    res.status(500).json({
+      message: err.message,
+    });
+
   }
 };
 

@@ -58,13 +58,44 @@ const UserProfile = () => {
   };
 
   // --- Delete Account ---
-  const handleDeleteAccount = () => {
-    if (window.confirm("Are you sure you want to delete your account? ❌")) {
-      alert("Account deleted successfully");
-      localStorage.clear();
-      window.location.href = "/signup";
-    }
-  };
+  const handleDeleteAccount = async () => {
+
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete your account? This action cannot be undone."
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+
+    const token = localStorage.getItem("token");
+
+    await axios.delete(
+      "https://metagurukul1.onrender.com/api/users/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    alert("Account deleted successfully.");
+
+    localStorage.clear();
+
+    window.location.href = "/signup";
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert(
+      err.response?.data?.message || "Failed to delete account."
+    );
+
+  }
+
+};
 
   return (
     <div className="user-profile-container">

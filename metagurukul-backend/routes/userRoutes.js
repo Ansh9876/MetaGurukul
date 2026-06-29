@@ -1,9 +1,14 @@
 const express = require("express");
-const { getProfile } = require("../controllers/userController");
+const {
+  getProfile,
+  getAccessStatus,
+  deleteAccount,
+} = require("../controllers/userController");
+
 const authMiddleware = require("../middleware/authMiddleware");
 const User = require("../models/User");
 const {  addActiveCourse,updateProgress } = require("../controllers/userController");
-const {getAccessStatus} = require("../controllers/userController");
+
 
 const router = express.Router();
 
@@ -26,5 +31,8 @@ router.put("/profile", authMiddleware, async (req, res) => {
  
  
 router.get("/access-status", authMiddleware, getAccessStatus);
+
+router.delete("/profile", authMiddleware, deleteAccount);
+
 module.exports = router;
  
