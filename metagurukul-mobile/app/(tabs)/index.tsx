@@ -147,6 +147,16 @@ export default function Home() {
 
   };
 
+  const hour = new Date().getHours();
+
+  let greeting = "Good Evening";
+
+  if (hour < 12) {
+    greeting = "Good Morning";
+  } else if (hour < 17) {
+    greeting = "Good Afternoon";
+  }
+
   return (
 
     <ScrollView
@@ -164,15 +174,15 @@ export default function Home() {
       <View style={styles.header}>
 
         <Text style={styles.logo}>
-          Hello {user?.name || "Learner"} 👋
+          {greeting}, {user?.name || "Learner"} 👋
         </Text>
 
         <Text style={styles.tagline}>
-          Continue your learning journey 🚀
+          Welcome back!
         </Text>
 
-        <Text style={styles.tagline}>
-          Learn Faster 🚀
+        <Text style={styles.subTagline}>
+          Continue your learning journey.
         </Text>
 
       </View>
@@ -406,9 +416,17 @@ const styles = StyleSheet.create({
   },
 
   tagline: {
-    fontSize: 14,
-    color: Colors.muted
-  },
+    fontSize: 20,
+    fontWeight: "600",
+    color: "#333",
+    marginTop: 6,
+},
+
+  subTagline: {
+    fontSize: 15,
+    color: "#666",
+    marginTop: 4,
+},
 
   sectionTitle: {
     fontSize: 22,

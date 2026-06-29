@@ -3,6 +3,7 @@ import { useState } from "react";
 import { API } from "../services/api";
 import { router } from "expo-router";
 import * as SecureStore from 'expo-secure-store';
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Signup() {
 
@@ -13,7 +14,32 @@ export default function Signup() {
 
     const [success, setSuccess] = useState(false);
 
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
     const handleSignup = async () => {
+
+        setError("");
+
+        if (!name || !email || !password || !whatsNumber) {
+            setError("Please fill in all fields.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            setError("Please enter a valid email address.");
+            return;
+        }
+
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters.");
+            return;
+        }
+
+        setLoading(true);
 
         try {
 
@@ -25,16 +51,38 @@ export default function Signup() {
             });
 
             await SecureStore.setItemAsync("token", res.data.token);
+            
+            await SecureStore.setItemAsync("token", res.data.token);
+
+await SecureStore.setItemAsync(
+    "user",
+    JSON.stringify({
+        name: res.data.name,
+        email: res.data.email,
+        role: res.data.role
+    })
+);
 
             setSuccess(true);
 
             setTimeout(() => {
-                router.replace("/");
+                router.replace("/(tabs)");
             }, 1500);
 
         } catch (err: any) {
-            console.log(err);
-            alert(err.response?.data?.message || "Signup failed ❌");
+
+            const message = err.response?.data?.message;
+
+            if (message) {
+                setError(message);
+            } else {
+                setError("Something went wrong. Please try again.");
+            }
+
+        } finally {
+
+            setLoading(false);
+
         }
 
     };
@@ -48,33 +96,86 @@ export default function Signup() {
             <TextInput
                 placeholder="Name"
                 value={name}
-                onChangeText={setName}
+                onChangeText={(text) => {
+                    setName(text);
+                    setError("");
+                }}
+                placeholderTextColor="#777"
                 style={styles.input}
             />
 
             <TextInput
                 placeholder="Email"
                 value={email}
-                onChangeText={setEmail}
+                onChangeText={(text) => {
+                    setEmail(text);
+                    setError("");
+                }}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                placeholderTextColor="#777"
                 style={styles.input}
             />
 
-            <TextInput
-                placeholder="Password"
-                secureTextEntry
-                value={password}
-                onChangeText={setPassword}
-                style={styles.input}
-            />
+            <View style={styles.passwordContainer}>
+
+                <TextInput
+                    placeholder="Password"
+                    placeholderTextColor="#777"
+                    secureTextEntry={!showPassword}
+                    value={password}
+                    style={styles.passwordInput}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onChangeText={(text) => {
+                        setPassword(text);
+                        setError("");
+                    }}
+
+                />
+
+                <TouchableOpacity
+                    onPress={() => setShowPassword(!showPassword)}
+                >
+                    <Ionicons
+                        name={showPassword ? "eye-off" : "eye"}
+                        size={22}
+                        color="#777"
+                    />
+                </TouchableOpacity>
+
+            </View>
+
             <TextInput
                 placeholder="WhatsApp Number"
                 value={whatsNumber}
-                onChangeText={setWhatsNumber}
+                onChangeText={(text) => {
+                    setWhatsNumber(text);
+                    setError("");
+                }}
+                keyboardType="phone-pad"
+                placeholderTextColor="#777"
                 style={styles.input}
             />
 
-            <TouchableOpacity style={styles.button} onPress={handleSignup}>
-                <Text style={styles.buttonText}>Sign Up</Text>
+            {error ? (
+                <Text style={styles.error}>
+                    {error}
+                </Text>
+            ) : null}
+
+            <TouchableOpacity
+                style={[
+                    styles.button,
+                    loading && { opacity: 0.7 }
+                ]}
+                disabled={loading}
+                onPress={handleSignup}
+            >
+                <Text style={styles.buttonText}>
+                    {loading ? "Creating Account..." : "Sign Up"}
+                </Text>
             </TouchableOpacity>
 
             <Text
@@ -149,5 +250,29 @@ const styles = StyleSheet.create({
     popupText: {
         color: "#fff",
         fontWeight: "bold"
-    }
+    },
+
+    error: {
+        color: "#d32f2f",
+        fontSize: 14,
+        marginBottom: 12,
+        marginLeft: 4,
+    },
+
+    passwordContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#ddd",
+        borderRadius: 12,
+        backgroundColor: "#fafafa",
+        paddingHorizontal: 14,
+        marginBottom: 15,
+    },
+
+    passwordInput: {
+        flex: 1,
+        paddingVertical: 14,
+        color: "#000",
+    },
 });
